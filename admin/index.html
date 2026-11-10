@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>KAHAL · Painel da Igreja</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --primary: #0F5C46; --accent: #2E8B74; --bg: #F6F8F7; --surface: #FFFFFF;
+    --text: #1A2420; --muted: #6B7670; --border: #E1E6E3; --danger: #B3261E;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { font-family: 'Public Sans', -apple-system, sans-serif; background: var(--bg); color: var(--text); font-size: 15px; letter-spacing: 0.002em; }
+  h1, h2, .brand, .stat .num { font-family: 'Fraunces', Georgia, serif; letter-spacing: -0.01em; }
+  button, .dock nav a { letter-spacing: 0.01em; }
+  .login-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .login-card { background: var(--surface); border-radius: 16px; padding: 32px; width: 100%; max-width: 400px; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  .brand { color: var(--primary); font-weight: 700; font-size: 15px; text-align: center; margin-bottom: 24px; }
+  h1 { font-size: 24px; margin-bottom: 6px; }
+  .muted { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+  select { width: 100%; border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; font-size: 15px; background: #fff; color: var(--text); }
+  input { width: 100%; border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; font-size: 16px; margin-bottom: 12px; }
+  input:focus { outline: 2px solid var(--accent); border-color: transparent; }
+  button { background: var(--primary); color: #fff; border: 0; border-radius: 12px; padding: 14px 20px; font-size: 15px; font-weight: 600; cursor: pointer; width: 100%; }
+  button:disabled { opacity: .5; cursor: default; }
+  .err { color: var(--danger); font-size: 13px; margin-bottom: 10px; }
+  /* Dock superior central (mesma linguagem do dock flutuante do app) */
+  .dockzone { position: sticky; top: 0; z-index: 10; display: flex; justify-content: center; padding: 16px 16px 8px; background: linear-gradient(var(--bg) 70%, transparent); }
+  .dock { display: flex; align-items: center; gap: 4px; background: var(--surface); border-radius: 999px; padding: 6px; box-shadow: 0 4px 16px rgba(15,92,70,.10), 0 1px 3px rgba(0,0,0,.06); max-width: 100%; flex-wrap: wrap; justify-content: center; }
+  .dock .mark { width: 34px; height: 34px; border-radius: 12px; background: var(--primary); color: #fff; font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center; margin: 0 6px 0 4px; flex: none; }
+  .dock nav { display: flex; gap: 2px; flex-wrap: wrap; justify-content: center; }
+  .dock nav a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 999px; white-space: nowrap; }
+  .dock nav a.active { color: var(--primary); background: #EAF3F0; }
+  .dock .out { width: auto; padding: 8px 14px; background: transparent; color: var(--muted); font-size: 13px; border-radius: 999px; white-space: nowrap; }
+  .dock .out:hover { background: #F1F5F3; }
+  main { max-width: 1080px; margin: 0 auto; padding: 24px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-bottom: 28px; }
+  .stat { background: var(--surface); border-radius: 14px; padding: 18px 20px; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+  .stat .num { font-size: 28px; font-weight: 700; color: var(--primary); }
+  .stat .lbl { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .card { background: var(--surface); border-radius: 14px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+  .card h2 { font-size: 17px; margin-bottom: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { text-align: left; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .4px; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+  td { padding: 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .pill { display: inline-block; font-size: 12px; font-weight: 600; border-radius: 999px; padding: 3px 10px; }
+  .pill.nova { background: #FDF0D5; color: #8A5A00; }
+  .pill.em_triagem { background: #E3EEFB; color: #1D4E89; }
+  .pill.respondida { background: #E7F4EC; color: #1E6B3C; }
+  .pill.pendente { background: #FDF0D5; color: #8A5A00; }
+  .pill.aceito { background: #E7F4EC; color: #1E6B3C; }
+  .pill.recusado { background: #FBE7E5; color: #8A2318; }
+  .row-actions button { width: auto; padding: 6px 12px; font-size: 12px; border-radius: 8px; background: var(--accent); }
+  .row-actions button.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  .row-actions button.danger { background: transparent; color: var(--danger); border: 1px solid var(--danger); }
+  .row-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  td select { width: auto; min-width: 150px; padding: 8px 10px; border-radius: 10px; }
+  td input { margin-bottom: 0; padding: 8px 10px; border-radius: 10px; }
+  td .row-actions { justify-content: flex-end; }
+  textarea { width: 100%; border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; font-size: 14px; font-family: inherit; min-height: 70px; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="./app.js?v=4"></script>
+</body>
+</html>

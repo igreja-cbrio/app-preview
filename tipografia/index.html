@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tipografia - 3 opções</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=DM+Serif+Display&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Sora:wght@400;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root { --primary:#0F5C46; --accent:#2E8B74; --bg:#F6F8F7; --surface:#FFF; --text:#1A2420; --muted:#6B7670; --border:#E1E6E3; }
+  * { box-sizing:border-box; margin:0; }
+  body { background:var(--bg); color:var(--text); }
+  .opt { max-width:760px; margin:0 auto; padding:40px 24px 8px; }
+  .tag { display:inline-block; font:600 12px 'Public Sans',sans-serif; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); margin-bottom:4px; }
+  .pairname { font:700 22px 'Public Sans',sans-serif; margin-bottom:2px; }
+  .pairdesc { font:400 14px 'Public Sans',sans-serif; color:var(--muted); margin-bottom:20px; }
+  .mock { background:var(--surface); border-radius:18px; padding:28px; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+  .greet { font-size:30px; margin-bottom:4px; }
+  .sub { font-size:15px; margin-bottom:22px; }
+  .sect { font-size:19px; margin-bottom:12px; }
+  .card { border:1px solid var(--border); border-radius:14px; padding:18px 20px; margin-bottom:12px; }
+  .card .t { font-size:16px; margin-bottom:4px; }
+  .card .d { font-size:14px; line-height:1.55; }
+  .btn { display:inline-block; border-radius:12px; padding:13px 22px; font-size:15px; margin-top:8px; background:var(--primary); color:#fff; }
+  .cap { font-size:12.5px; margin-top:14px; }
+  /* A: Fraunces + Public Sans */
+  .a .greet,.a .sect,.a .card .t { font-family:'Fraunces',serif; font-weight:600; letter-spacing:-0.01em; }
+  .a .greet { font-weight:700; }
+  .a .sub,.a .card .d,.a .cap { font-family:'Public Sans',sans-serif; font-weight:400; color:var(--muted); }
+  .a .btn { font-family:'Public Sans',sans-serif; font-weight:600; letter-spacing:.01em; }
+  /* B: DM Serif Display + DM Sans */
+  .b .greet,.b .sect { font-family:'DM Serif Display',serif; font-weight:400; }
+  .b .card .t { font-family:'DM Sans',sans-serif; font-weight:700; }
+  .b .sub,.b .card .d,.b .cap { font-family:'DM Sans',sans-serif; font-weight:400; color:var(--muted); }
+  .b .btn { font-family:'DM Sans',sans-serif; font-weight:700; }
+  /* C: Sora + Source Sans 3 */
+  .c .greet,.c .sect,.c .card .t { font-family:'Sora',sans-serif; font-weight:600; }
+  .c .sub,.c .card .d,.c .cap { font-family:'Source Sans 3',sans-serif; font-weight:400; color:var(--muted); font-size:15px; }
+  .c .card .d { font-size:15px; }
+  .c .btn { font-family:'Sora',sans-serif; font-weight:600; }
+</style>
+</head>
+<body>
+
+<div class="opt a">
+  <span class="tag">Opção A - recomendada</span>
+  <div class="pairname">Fraunces + Public Sans</div>
+  <div class="pairdesc">Serifa editorial com personalidade nos títulos, sans neutra e precisa no texto. Acolhedora sem ser informal.</div>
+  <div class="mock">
+    <div class="greet">Bom dia, Matheus</div>
+    <div class="sub">Domingo, 10 de novembro · Igreja Demo</div>
+    <div class="sect">Próximos cultos</div>
+    <div class="card"><div class="t">Culto Domingo Manhã</div><div class="d">Dom 09:00 · Louvor, palavra e ceia. A contagem é feita pelos voluntários na entrada.</div></div>
+    <div class="sect">Avisos</div>
+    <div class="card"><div class="t">Ensaio geral da Conferência Jovens</div><div class="d">Sábado às 16h no salão principal. Presença de todos os voluntários de palco e mídia.</div></div>
+    <span class="btn">Confirmar presença</span>
+    <div class="cap">123 membros já confirmaram · atualizado há 2 horas</div>
+  </div>
+</div>
+
+<div class="opt b">
+  <span class="tag">Opção B</span>
+  <div class="pairname">DM Serif Display + DM Sans</div>
+  <div class="pairdesc">Par da mesma família, clássico e elegante. Serifa de contraste alto só nos títulos grandes.</div>
+  <div class="mock">
+    <div class="greet">Bom dia, Matheus</div>
+    <div class="sub">Domingo, 10 de novembro · Igreja Demo</div>
+    <div class="sect">Próximos cultos</div>
+    <div class="card"><div class="t">Culto Domingo Manhã</div><div class="d">Dom 09:00 · Louvor, palavra e ceia. A contagem é feita pelos voluntários na entrada.</div></div>
+    <div class="sect">Avisos</div>
+    <div class="card"><div class="t">Ensaio geral da Conferência Jovens</div><div class="d">Sábado às 16h no salão principal. Presença de todos os voluntários de palco e mídia.</div></div>
+    <span class="btn">Confirmar presença</span>
+    <div class="cap">123 membros já confirmaram · atualizado há 2 horas</div>
+  </div>
+</div>
+
+<div class="opt c" style="padding-bottom:48px">
+  <span class="tag">Opção C</span>
+  <div class="pairname">Sora + Source Sans 3</div>
+  <div class="pairdesc">Geométrica moderna nos títulos, sans humanista no corpo. Mais tecnológica, menos calorosa.</div>
+  <div class="mock">
+    <div class="greet">Bom dia, Matheus</div>
+    <div class="sub">Domingo, 10 de novembro · Igreja Demo</div>
+    <div class="sect">Próximos cultos</div>
+    <div class="card"><div class="t">Culto Domingo Manhã</div><div class="d">Dom 09:00 · Louvor, palavra e ceia. A contagem é feita pelos voluntários na entrada.</div></div>
+    <div class="sect">Avisos</div>
+    <div class="card"><div class="t">Ensaio geral da Conferência Jovens</div><div class="d">Sábado às 16h no salão principal. Presença de todos os voluntários de palco e mídia.</div></div>
+    <span class="btn">Confirmar presença</span>
+    <div class="cap">123 membros já confirmaram · atualizado há 2 horas</div>
+  </div>
+</div>
+
+</body>
+</html>
